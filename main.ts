@@ -11,6 +11,24 @@ function Change_Level (Level_Number: number) {
         tiles.setCurrentTilemap(tilemap`level3`)
     } else if (Level_Number == 3) {
         tiles.setCurrentTilemap(tilemap`level7`)
+        Main_Player.setImage(img`
+            . . . . f f f f f . . . . . . . 
+            . . . f 5 5 5 5 5 f . . . . . . 
+            . . f e e e e 5 5 5 f . . . . . 
+            . c e f e e f e 5 5 f f . . . . 
+            . c e f e e f e 5 5 e e f . . . 
+            c e 5 5 e e e e 5 5 b e c . . . 
+            c e e e e c e e 5 5 b e c . f f 
+            c c c c c e e e 5 5 f c . f 5 f 
+            . f e e e e e 5 5 f f . . f 5 f 
+            . . f f f f f 5 5 5 5 f . f 5 f 
+            . . . . f 5 5 5 5 5 5 5 f f 5 f 
+            . . . f 5 f f 5 f 5 5 5 5 f f . 
+            . . . f 5 f f 5 f 5 5 5 5 f . . 
+            . . . f e b f e b f f 5 f . . . 
+            . . . f e e c e e b b e f . . . 
+            . . . . f f f f f f f f f . . . 
+            `)
     } else if (Level_Number == 4) {
         tiles.setCurrentTilemap(tilemap`level11`)
     } else if (Level_Number == 5) {
@@ -32,9 +50,11 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, fu
     Current_Level += 1
     Change_Level(Current_Level)
     music.beamUp.play()
+    info.changeScoreBy(1)
 })
 let Main_Player: Sprite = null
 let Current_Level = 0
+info.setScore(0)
 Current_Level = 1
 Change_Level(1)
 Main_Player = sprites.create(assets.image`Player`, SpriteKind.Player)
